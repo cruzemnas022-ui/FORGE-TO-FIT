@@ -1,0 +1,14 @@
+{
+  "name": "forge-run",
+  "version": "12.0.0",
+  "private": true,
+  "description": "Forge To Fit running plan",
+  "dependencies": {
+    "@capacitor/android": "^6.2.0",
+    "@capacitor/core": "^6.2.0"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^3.0.5",
+    "@capacitor/cli": "^6.2.0"
+  }
+}

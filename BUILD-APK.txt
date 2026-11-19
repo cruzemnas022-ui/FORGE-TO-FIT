@@ -1,0 +1,28 @@
+FORGE RUN: BUILD THE ANDROID APK (free, no Android Studio needed)
+
+Option A: GitHub (easiest, about 10 minutes, once)
+1. Make a free account at github.com and create a new repository (private is fine).
+2. On the repository page choose Add file > Upload files, and drag in EVERYTHING from this folder
+   (www, assets, .github, package.json, capacitor.config.json, .gitignore).
+   Tip: the .github folder is hidden on some computers. If it does not upload, use Add file > Create new file,
+   type  .github/workflows/build-apk.yml  as the name, and paste in the contents of that file.
+3. Open the Actions tab. The "Build Android APK" job runs by itself (or press Run workflow).
+4. When it shows a green tick (about 5 minutes), open it and download the artifact "forge-run-apk". Unzip it to get app-debug.apk.
+5. Send app-debug.apk to your Android phone (WhatsApp, Drive, USB). Tap it, allow "Install unknown apps" when asked, and install.
+
+Option B: your own computer (needs Node 20, Java 17 and Android Studio or the Android SDK)
+   npm install
+   npx cap add android
+   npx @capacitor/assets generate --android
+   npx cap sync android
+   cd android && ./gradlew assembleDebug
+   The APK is in android/app/build/outputs/apk/debug/app-debug.apk
+
+Notes
+- This APK is signed with a debug key. It installs fine on any phone you share it with, but it cannot be uploaded to Google Play.
+  For Play Store you need a release key (ask and I will add that step).
+- The app is bundled inside the APK, so it works offline from the first launch with no hosting.
+- Data is saved inside the app on each phone. Uninstalling the app erases it, so use Settings > Backup.
+- In the APK, "Save backup file" may not open a file in some Android versions. Use "Copy backup" and paste it somewhere safe.
+- To update the app: replace the files in www, raise the CACHE name in www/sw.js, build again, and install the new APK over the old one (data is kept).
+- iPhone: an iOS app cannot be built this way. It needs a Mac and an Apple Developer account. Use Safari > Share > Add to Home Screen instead.

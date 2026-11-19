@@ -1,0 +1,7 @@
+{
+  "appId": "com.forgetofit.run",
+  "appName": "Forge Run",
+  "webDir": "www",
+  "backgroundColor": "#000000",
+  "android": { "allowMixedContent": false }
+}
